@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendar Assignment</title>
+
+  <!-- Tailwind CDN for prototypes (no build required) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Link to project CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-slate-50 min-h-screen font-sans p-4">
+  <div class="max-w-6xl mx-auto">
+    <header class="flex items-center justify-between mb-4">
+      <h1 class="text-2xl font-bold">Calendar</h1>
+      <div class="flex items-center gap-2">
+        <button id="prevBtn" class="px-3 py-1 bg-white rounded shadow">Prev</button>
+        <div class="px-4 py-2 bg-white rounded shadow" id="monthLabel">Month</div>
+        <button id="nextBtn" class="px-3 py-1 bg-white rounded shadow">Next</button>
+      </div>
+    </header>
+
+    <main class="bg-white rounded-lg shadow p-4">
+      <div id="calendar" class="grid grid-cols-7 gap-1"></div>
+    </main>
+
+    <footer class="mt-4 text-sm text-gray-500">
+      Events are saved in your browser (localStorage). Long titles wrap inside cells and are truncated with hover to show full text.
+    </footer>
+  </div>
+
+  <!-- Modal: Add / Edit -->
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-50">
+    <div id="modalBg" class="absolute inset-0 bg-black/45"></div>
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md mx-4 p-4 z-40">
+      <div class="flex justify-between items-center mb-3">
+        <h2 id="modalTitle" class="text-lg font-semibold">Add event</h2>
+        <button id="closeModal" class="px-2 py-1 rounded bg-slate-100">Close</button>
+      </div>
+
+      <form id="eventForm" class="grid gap-3">
+        <label class="block">
+          <div class="text-sm font-medium mb-1">Title <span class="text-red-500">*</span></div>
+          <input id="eventTitle" required class="w-full border rounded px-2 py-1" placeholder="Event title" />
+        </label>
+
+        <label class="block">
+          <div class="text-sm font-medium mb-1">Time</div>
+          <input id="eventTime" type="time" class="w-full border rounded px-2 py-1" />
+        </label>
+
+        <div class="flex justify-between items-center">
+          <div id="deleteContainer" class="hidden">
+            <button id="deleteEventBtn" type="button" class="text-red-600">Delete event</button>
+          </div>
+          <div class="ml-auto flex gap-2">
+            <button id="cancelBtn" type="button" class="px-3 py-1 bg-slate-100 rounded">Cancel</button>
+            <button id="saveBtn" type="submit" class="px-3 py-1 bg-blue-600 text-white rounded">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Link to project JS -->
+  <script src="script.js"></script>
+</body>
+</html>
